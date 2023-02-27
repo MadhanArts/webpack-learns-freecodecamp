@@ -3,7 +3,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   //   devtool: 'none',
-  entry: './src/index.js',
+  entry: {
+    main: './src/index.js', // these keys will be passed as [name] while setting output file name
+    vendor: './src/vendor.js'
+  },
   // output: {
   //   filename: 'master.[contenthash].js',
   //   path: path.resolve(__dirname, 'dist'),

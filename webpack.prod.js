@@ -9,7 +9,7 @@ module.exports = merge(common, {
   //   devtool: 'none',
   // entry: './src/index.js',
   output: {
-    filename: 'master.[contenthash].js',
+    filename: '[name].[contenthash].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     // clean: true, // this also used instead of CleanWebpackPlugin
   },
