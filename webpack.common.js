@@ -8,6 +8,12 @@ module.exports = {
   //   filename: 'master.[contenthash].js',
   //   path: path.resolve(__dirname, 'dist'),
   // },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/template.html',
+      inject: 'body'
+    }),
+  ],
   module: {
     // loader loads in reverse order
     rules: [
@@ -36,12 +42,28 @@ module.exports = {
           },
         ],
       },
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader',
+          },
+        ],
+      },
+      {
+        test: /\.(svg|png|jpg|gif)$/,
+        type: "javascript/auto",  // since webpack 5 because webpack 5 has Assets loader by defaut
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: "[name].[contenthash].[ext]",
+              outputPath: 'images',
+              esModule: false // since webpack 5 because webpack 5 has Assets loader by defaut
+            }
+          },
+        ],
+      },
     ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './src/template.html',
-      inject: 'body'
-    }),
-  ],
 };

@@ -2,6 +2,7 @@ const path = require('path');
 const common = require('./webpack.common');
 const { merge } = require('webpack-merge');
 // const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = merge(common, {
   mode: 'production',
@@ -10,6 +11,7 @@ module.exports = merge(common, {
   output: {
     filename: 'master.[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
+    // clean: true, // this also used instead of CleanWebpackPlugin
   },
   // module: {
   //   // loader loads in reverse order
@@ -41,10 +43,7 @@ module.exports = merge(common, {
   //     },
   //   ],
   // },
-  // plugins: [
-  //   new HtmlWebpackPlugin({
-  //     template: './src/template.html',
-  //     inject: 'body'
-  //   }),
-  // ],
+  plugins: [
+    new CleanWebpackPlugin(), // this can also achieved using output.clean in webpack 5
+  ],
 });
