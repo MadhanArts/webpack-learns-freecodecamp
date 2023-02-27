@@ -1,15 +1,13 @@
 const path = require('path');
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
   //   devtool: 'none',
   entry: './src/index.js',
-  output: {
-    filename: 'master.[contenthash].js',
-    path: path.resolve(__dirname, 'dist'),
-  },
+  // output: {
+  //   filename: 'master.[contenthash].js',
+  //   path: path.resolve(__dirname, 'dist'),
+  // },
   module: {
     // loader loads in reverse order
     rules: [
