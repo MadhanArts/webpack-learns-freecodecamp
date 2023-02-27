@@ -11,12 +11,6 @@ module.exports = {
   //   filename: 'master.[contenthash].js',
   //   path: path.resolve(__dirname, 'dist'),
   // },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: './src/template.html',
-      inject: 'body'
-    }),
-  ],
   module: {
     // loader loads in reverse order
     rules: [
@@ -31,20 +25,6 @@ module.exports = {
       //     },
       //   ],
       // },
-      {
-        test: /\.scss$/,
-        use: [
-          {
-            loader: 'style-loader', // inject loaded css webpack to DOM
-          },
-          {
-            loader: 'css-loader', // to convert css file to commonjs
-          },
-          {
-            loader: 'sass-loader', // to convert sass file to css
-          },
-        ],
-      },
       {
         test: /\.html$/,
         use: [
